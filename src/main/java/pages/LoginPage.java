@@ -35,6 +35,11 @@ public class LoginPage {
     public  void clickButton() throws InterruptedException {
         button.click();
     }
+    public void login(String name , String password ) throws InterruptedException {
+        setUserName(name);
+        setPassword(password);
+        clickButton();
+    }
 
     public boolean isBrandLogoDisPlay(){
         return logo.isDisplayed();
