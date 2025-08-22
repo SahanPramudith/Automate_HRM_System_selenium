@@ -4,11 +4,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
 
-public class SideBar {
+public class SideBarPage {
     WebDriver driver;
-    public SideBar(WebDriver driver){
+    public SideBarPage(WebDriver driver){
         this.driver=driver;
         PageFactory.initElements(driver,this);
     }
@@ -19,4 +18,5 @@ public class SideBar {
     public boolean isDashboardListDisplay(){
         return dashboardList.isDisplayed();
     }
+    
 }

@@ -2,7 +2,7 @@ import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.LoginPage;
-import pages.SideBar;
+import pages.SideBarPage;
 
 public class SiderBarTest extends BaseTest {
 
@@ -11,7 +11,7 @@ public class SiderBarTest extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("Admin","admin123");
 
-        SideBar sideBar = new SideBar(driver);
+        SideBarPage sideBar = new SideBarPage(driver);
         Assert.assertTrue(sideBar.isDashboardListDisplay(),"BUG:side bar is not displayed");
     }
 }
