@@ -15,9 +15,9 @@ public class AdminPage {
 
     WebDriver driver;
 
-    public AdminPage(WebDriver driver){
-        this.driver=driver;
-        PageFactory.initElements(driver,this);
+    public AdminPage(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
 
@@ -27,38 +27,30 @@ public class AdminPage {
     WebElement AdminLink;
     @FindBy(xpath = "//button[normalize-space()='Add']")
     WebElement adduserButton;
-    @FindBy(xpath = "//div[contains(@class,'oxd-select-text')])[1]")
-    WebElement droDown;
-    @FindBy(xpath = "//div[@role='option']")
-    WebElement dropDownMenu;
-
-    public void goAdminPage(){
+    @FindBy(xpath = "//body[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[2]/form[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]")
+    WebElement drpDown;
+    @FindBy(xpath = "//span[contains(text(),'Admin')]")
+    WebElement admin;
+    @FindBy(xpath = "//label[text()='User Role']/../following-sibling::div//div[contains(@class,'oxd-select-text')]")
+    WebElement selectedVal;
+    public void goAdminPage() {
         AdminLink.click();
     }
-    public boolean isSystemUserCardDisplay(){
+
+    public boolean isSystemUserCardDisplay() {
         return systemUserTex.isDisplayed();
     }
-    public boolean isAdminPageLord(){
-       return driver.getCurrentUrl().contains("viewSystemUsers");
+
+    public boolean isAdminPageLord() {
+        return driver.getCurrentUrl().contains("viewSystemUsers");
     }
 
-    public void selectDropdownOption() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement userRoleDropdown = wait.until(ExpectedConditions
-                .elementToBeClickable(By.xpath("(//div[contains(@class,'oxd-select-text')])[1]")));
-        userRoleDropdown.click();
+    public void selectDropdownOption() throws InterruptedException {
+        drpDown.click();
+        admin.click();
+        System.out.println("selectedVal"+selectedVal.getText());
 
-// Step 2: Get all options when expanded
-        List<WebElement> options = wait.until(ExpectedConditions
-                .visibilityOfAllElementsLocatedBy(By.xpath("//div[@role='option']")));
-
-// Print option texts (just to track values)
-        for (WebElement opt : options) {
-            System.out.println(opt.getText());
-        }
 
     }
-
-
-
 }
+
