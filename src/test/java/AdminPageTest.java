@@ -14,7 +14,7 @@ public class AdminPageTest extends BaseTest {
         AdminPage adminPage = new AdminPage(driver);
         adminPage.goAdminPage();
         Thread.sleep(3000);
-       Assert.assertTrue(adminPage.isAdminPageLord(),"BUG:viewSystemUsers view Attempt fail");
+       Assert.assertTrue(adminPage.isAdminPageLoaded(),"BUG:viewSystemUsers view Attempt fail");
     }
 
     @Test
@@ -23,7 +23,7 @@ public class AdminPageTest extends BaseTest {
         loginPage.login("Admin","admin123");
         AdminPage adminPage = new AdminPage(driver);
         adminPage.goAdminPage();
-        adminPage.selectDropdownOption();
+        adminPage.addUser();
 
     }
 
