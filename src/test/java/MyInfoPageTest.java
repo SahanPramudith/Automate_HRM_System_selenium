@@ -14,4 +14,15 @@ public class MyInfoPageTest extends BaseTest {
         myInfo.goMyInfo();
         Assert.assertTrue(myInfo.isLordPage(),"BUG : My Info  Page Lord Attempt Fail ");
     }
+    @Test
+    public void personalDetails() throws InterruptedException {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("Admin","admin123");
+        MyInfo myInfo = new MyInfo(driver);
+        myInfo.goMyInfo();
+        //----------------------------------------------------------
+
+       // myInfo.personalDetails();
+        myInfo.contactDetails();
+    }
 }

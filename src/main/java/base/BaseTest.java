@@ -14,8 +14,8 @@ public class BaseTest {
     public void openDriver(){
         driver=new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10
-        ));
+       driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10
+         ));
         driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
     }
 
