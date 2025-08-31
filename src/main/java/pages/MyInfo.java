@@ -53,6 +53,21 @@ public class MyInfo {
     @FindBy(xpath = "//span[normalize-space()='Sri Lanka']")
     WebElement sriLanka ;
 
+    @FindBy(xpath = "//body[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/form[1]/div[2]/div[1]/div[1]/div[1]/div[2]/input[1]")
+    WebElement homeTextFiled ;
+
+    @FindBy(xpath = "//body[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/form[1]/div[2]/div[1]/div[2]/div[1]/div[2]/input[1]")
+    WebElement MobileTextFiled ;
+
+    @FindBy(xpath = "//body[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/form[1]/div[2]/div[1]/div[3]/div[1]/div[2]/input[1]")
+    WebElement workTextFiled ;
+
+    @FindBy(xpath = "//body[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/form[1]/div[3]/div[1]/div[1]/div[1]/div[2]/input[1]")
+    WebElement emailTextField ;
+
+    @FindBy(xpath = "//body[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/form[1]/div[3]/div[1]/div[2]/div[1]/div[2]/input[1]")
+    WebElement otherEmailTextField ;
+
 
 
     public void goMyInfo(){
@@ -85,6 +100,11 @@ public class MyInfo {
         WebElement drpdown = webDriverWait.until(ExpectedConditions.elementToBeClickable(countryDropDown));
         drpdown.click();
         sriLanka.click();
+        homeTextFiled.sendKeys("0741600386");
+        MobileTextFiled.sendKeys("0751600386");
+        workTextFiled.sendKeys("0751600386");
+        emailTextField.sendKeys("sahan@gmail.com");
+        otherEmailTextField.sendKeys("sahanpramudith@gmail.com");
     }
 
 }
