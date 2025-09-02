@@ -22,7 +22,7 @@ public class MyInfoPageTest extends BaseTest {
         myInfo.goMyInfo();
         //----------------------------------------------------------
 
-       // myInfo.personalDetails();
-        myInfo.contactDetails();
+        myInfo.personalDetails();
+       // myInfo.contactDetails();
     }
 }

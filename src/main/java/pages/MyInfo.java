@@ -1,5 +1,7 @@
 package pages;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -25,6 +27,12 @@ public class MyInfo {
 
     @FindBy(xpath = "//input[@placeholder='First Name']")
     WebElement firstNameTextField;
+
+    @FindBy(xpath = "//input[@placeholder='Middle Name']")
+    WebElement middleNameTextField;
+
+    @FindBy(xpath = "//input[@placeholder='Last Name']")
+    WebElement lastNameTextField;
 
     @FindBy(xpath = "//div[@class='orangehrm-horizontal-padding orangehrm-vertical-padding']//div[1]//div[1]//div[1]//div[1]//div[2]//input[1]")
     WebElement contactDetailsAddress1 ;
@@ -80,16 +88,6 @@ public class MyInfo {
         return driver.getCurrentUrl().contains("viewPersonalDetails");
     }
 
-//    public void personalDetails() throws InterruptedException {
-//        personalDetailsLink.click();
-//        firstNameTextField.sendKeys("sahan");
-//        WebElement firstNameTextField1 = firstNameTextField;
-//        System.out.println("firstNameTextField1 = " + firstNameTextField1);
-//
-//        Thread.sleep(5000);
-//
-//    }
-
 
     public void contactDetails() throws InterruptedException {
         WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -111,5 +109,20 @@ public class MyInfo {
         saveButton.click();
         Thread.sleep(3000);
     }
+
+    public void personalDetails() throws InterruptedException {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement firstName = wait.until(ExpectedConditions.elementToBeClickable(By.name("firstName")));
+        firstName.clear();
+        firstName.sendKeys("sahan");
+        Thread.sleep(3000);
+        middleNameTextField.sendKeys(Keys.CONTROL + "a", Keys.DELETE);
+        middleNameTextField.sendKeys("lakeesha");
+       // Thread.sleep(30000);
+        lastNameTextField.sendKeys(Keys.CONTROL+"a",Keys.DELETE);
+        lastNameTextField.sendKeys("pramudith");
+        Thread.sleep(30000);
+    }
+
 
 }
