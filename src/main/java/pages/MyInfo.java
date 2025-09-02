@@ -68,6 +68,9 @@ public class MyInfo {
     @FindBy(xpath = "//body[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/form[1]/div[3]/div[1]/div[2]/div[1]/div[2]/input[1]")
     WebElement otherEmailTextField ;
 
+    @FindBy(xpath = "//button[normalize-space()='Save']")
+    WebElement saveButton ;
+
 
 
     public void goMyInfo(){
@@ -105,6 +108,8 @@ public class MyInfo {
         workTextFiled.sendKeys("0751600386");
         emailTextField.sendKeys("sahan@gmail.com");
         otherEmailTextField.sendKeys("sahanpramudith@gmail.com");
+        saveButton.click();
+        Thread.sleep(3000);
     }
 
 }
