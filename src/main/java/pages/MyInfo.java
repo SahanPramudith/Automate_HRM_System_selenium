@@ -79,6 +79,9 @@ public class MyInfo {
     @FindBy(xpath = "//button[normalize-space()='Save']")
     WebElement saveButton ;
 
+    @FindBy(xpath = "//label[text()='Nickname']/../following-sibling::div/input\n")
+    WebElement nickNameTexFiled ;
+
 
 
     public void goMyInfo(){
@@ -121,7 +124,7 @@ public class MyInfo {
        // Thread.sleep(30000);
         lastNameTextField.sendKeys(Keys.CONTROL+"a",Keys.DELETE);
         lastNameTextField.sendKeys("pramudith");
-        Thread.sleep(30000);
+        Thread.sleep(3000);
     }
 
 
