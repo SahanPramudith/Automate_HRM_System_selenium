@@ -14,9 +14,12 @@ import java.time.Duration;
 public class MyInfo {
 
     WebDriver driver;
+    WebDriverWait wait;
     public MyInfo(WebDriver driver){
         this.driver=driver;
         PageFactory.initElements(driver,this);
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
     }
 
     @FindBy(linkText = "My Info")
@@ -79,8 +82,14 @@ public class MyInfo {
     @FindBy(xpath = "//button[normalize-space()='Save']")
     WebElement saveButton ;
 
-    @FindBy(xpath = "//label[text()='Nickname']/../following-sibling::div/input\n")
-    WebElement nickNameTexFiled ;
+    @FindBy(xpath = "//form[@class='oxd-form']//input[1]")
+    WebElement employerIdTextFiled ;
+
+     @FindBy(xpath = "//label[text()='Other Id']/following::input[1]")
+     WebElement OtherId ;
+
+     @FindBy(xpath = "//div[contains(@class,'oxd-select-text')]")
+     WebElement countyDropdown ;
 
 
 
@@ -93,7 +102,7 @@ public class MyInfo {
 
 
     public void contactDetails() throws InterruptedException {
-        WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
+     //   WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
         contactDetailsLink.click();
         contactDetailsAddress1.sendKeys("Matara");
         contactDetailsAddress2.sendKeys("gandara");
@@ -101,7 +110,7 @@ public class MyInfo {
         contactDetailsStreet.sendKeys("gandara");
         province.sendKeys("south");
         zipCode.sendKeys("2040");
-        WebElement drpdown = webDriverWait.until(ExpectedConditions.elementToBeClickable(countryDropDown));
+        WebElement drpdown = wait.until(ExpectedConditions.elementToBeClickable(countryDropDown));
         drpdown.click();
         sriLanka.click();
         homeTextFiled.sendKeys("0741600386");
@@ -111,6 +120,7 @@ public class MyInfo {
         otherEmailTextField.sendKeys("sahanpramudith@gmail.com");
         saveButton.click();
         Thread.sleep(3000);
+
     }
 
     public void personalDetails() throws InterruptedException {
@@ -124,7 +134,24 @@ public class MyInfo {
        // Thread.sleep(30000);
         lastNameTextField.sendKeys(Keys.CONTROL+"a",Keys.DELETE);
         lastNameTextField.sendKeys("pramudith");
+        employerIdTextFiled.sendKeys(Keys.CONTROL+"a",Keys.DELETE);
+        employerIdTextFiled.sendKeys("emp1000");
+        OtherId.sendKeys(Keys.CONTROL+"a",Keys.DELETE);
+        OtherId.sendKeys("sahan12");
+        serCountry("Cambodian");
         Thread.sleep(3000);
+    }
+
+    public void dropDown(WebElement webElement, String option){
+//        webElement.click();
+        wait.until(ExpectedConditions.elementToBeClickable(webElement)).click();
+        WebElement clickOption = wait.until(ExpectedConditions.
+                elementToBeClickable(By.xpath("//div[@role='listbox']//span[normalize-space()='" + option + "']")));
+        clickOption.click();
+    }
+
+    public void serCountry(String country){
+        dropDown(countyDropdown,country);
     }
 
 
