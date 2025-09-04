@@ -89,8 +89,10 @@ public class MyInfo {
      WebElement OtherId ;
 
      @FindBy(xpath = "//div[contains(@class,'oxd-select-text')]")
-     WebElement countyDropdown ;
+     WebElement Nationality ;
 
+     @FindBy(xpath = "//label[text()='Marital Status']/parent::div/following-sibling::div//div[contains(@class,'oxd-select-text')]")
+     WebElement maritalDropDown ;
 
 
     public void goMyInfo(){
@@ -122,6 +124,13 @@ public class MyInfo {
         Thread.sleep(3000);
 
     }
+    public void dropDown(WebElement webElement, String option){
+//        webElement.click();
+        wait.until(ExpectedConditions.elementToBeClickable(webElement)).click();
+        WebElement clickOption = wait.until(ExpectedConditions.
+                elementToBeClickable(By.xpath("//div[@role='listbox']//span[normalize-space()='" + option + "']")));
+        clickOption.click();
+    }
 
     public void personalDetails() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -138,20 +147,16 @@ public class MyInfo {
         employerIdTextFiled.sendKeys("emp1000");
         OtherId.sendKeys(Keys.CONTROL+"a",Keys.DELETE);
         OtherId.sendKeys("sahan12");
-        serCountry("Cambodian");
+        serNationality("Cambodian");
+        MaritalStatus("Single");
         Thread.sleep(3000);
     }
 
-    public void dropDown(WebElement webElement, String option){
-//        webElement.click();
-        wait.until(ExpectedConditions.elementToBeClickable(webElement)).click();
-        WebElement clickOption = wait.until(ExpectedConditions.
-                elementToBeClickable(By.xpath("//div[@role='listbox']//span[normalize-space()='" + option + "']")));
-        clickOption.click();
+    public void serNationality(String country){
+        dropDown(Nationality,country);
     }
-
-    public void serCountry(String country){
-        dropDown(countyDropdown,country);
+    public void MaritalStatus(String option){
+        dropDown(maritalDropDown,option);
     }
 
 
