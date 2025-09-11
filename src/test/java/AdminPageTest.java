@@ -23,8 +23,9 @@ public class AdminPageTest extends BaseTest {
         loginPage.login("Admin","admin123");
         AdminPage adminPage = new AdminPage(driver);
         adminPage.goAdminPage();
-        adminPage.addUser();
-
+        adminPage.addUser("Admin","saja","Enabled","sahan123","sahan123");
+        //adminPage.searchSystemUser();
+        Thread.sleep(4000);
     }
 
 }

@@ -51,6 +51,16 @@ public class AdminPage {
     @FindBy(xpath = "//button[normalize-space()='Save']")
     WebElement userSaveButton;
 
+    @FindBy(xpath = "//div[@class='oxd-input-group oxd-input-field-bottom-space']//div//input[@class='oxd-input oxd-input--active']")
+    WebElement userName;
+
+    @FindBy(xpath = "//input[@placeholder='Type for hints...']")
+    WebElement getEmployerName;
+
+    @FindBy(xpath = "//button[@type='submit']")
+    WebElement searchButton;
+
+
 
     public void goAdminPage() {
         AdminLink.click();
@@ -80,14 +90,22 @@ public class AdminPage {
         selectDropdownValue(statusDropdown, status);
     }
 
-    public void addUser() {
+    public void addUser(String role,String empName, String status,String Password, String comfPassword ) {
         addUsrButton.click();
-        selectUserRole("Admin");   // or "ESS"
-        employerName.sendKeys("sahan123");
-        selectStatus("Enabled");   // or "Disabled"
-        userNameTextField.sendKeys("sahan");
-        password.sendKeys("sahan56789");
-        confirmPassword.sendKeys("sahan56789");
+        selectUserRole(role);   // or "ESS"
+        employerName.sendKeys(empName);
+        selectStatus(status);   // or "Disabled"
+        userNameTextField.sendKeys(status);
+        password.sendKeys(Password);
+        confirmPassword.sendKeys(comfPassword);
         userSaveButton.click();
     }
+
+//    public  void searchSystemUser(){
+//        userNameTextField.sendKeys("sahan");
+//        selectUserRole("Admin");
+//        employerName.sendKeys("Peter Anderson");
+//        selectStatus("Enabled");
+//        //searchButton.click();
+//    }
 }
